@@ -44,7 +44,7 @@ end
 packer.startup {
   function(use)
     -- it is recommended to put impatient.nvim before any other plugins
-    --   use { "lewis6991/impatient.nvim", config = [[require('impatient')]] }
+    use { "tonyparkerspb/impatient.nvim", config = [[require('impatient')]] }
 
     use { "tonyparkerspb/packer.nvim", opt = true }
 
@@ -96,15 +96,15 @@ packer.startup {
     --   end
 
     --   -- Super fast buffer jump
-    --   use {
-    --     "phaazon/hop.nvim",
-    --     event = "VimEnter",
-    --     config = function()
-    --       vim.defer_fn(function()
-    --         require("config.nvim_hop")
-    --       end, 2000)
-    --     end,
-    --   }
+    use {
+      "tonyparkerspb/hop.nvim",
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function()
+          require("config.nvim_hop")
+        end, 2000)
+      end,
+    }
 
     --   -- Show match number and index for searching
     --   use {
@@ -116,7 +116,7 @@ packer.startup {
 
     --   -- File search, tag search and more
     --   if vim.g.is_win then
-    --     use { "Yggdroot/LeaderF", cmd = "Leaderf" }
+    use { "tonyparkerspb/LeaderF", cmd = "Leaderf" }
     --   else
     --     use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
     --   end
@@ -197,17 +197,14 @@ packer.startup {
     --   end
 
     --   -- Snippet engine and snippet template
-    --   use { "SirVer/ultisnips", event = "InsertEnter" }
+    use { "tonyparkerspb/ultisnips", event = "InsertEnter" }
     --   use { "honza/vim-snippets", after = "ultisnips" }
 
     --   -- Automatic insertion and deletion of a pair of characters
     --   use { "Raimondi/delimitMate", event = "InsertEnter" }
 
-    --   -- Comment plugin
-    --   use { "tpope/vim-commentary", event = "VimEnter" }
-
     --   -- Multiple cursor plugin like Sublime Text?
-    --   -- use 'mg979/vim-visual-multi'
+    use 'tonyparkerspb/vim-visual-multi'
 
     --   -- Autosave files on certain events
     --   use { "907th/vim-auto-save", event = "InsertEnter" }
@@ -225,12 +222,12 @@ packer.startup {
     --   })
 
     --   -- Handy unix command inside Vim (Rename, Move etc.)
-    --   use { "tpope/vim-eunuch", cmd = { "Rename", "Delete" } }
+    use { "tonyparkerspb/vim-eunuch", cmd = { "Rename", "Delete" } }
 
     --   -- Repeat vim motions
     --   use { "tpope/vim-repeat", event = "VimEnter" }
 
-    --   use { "nvim-zh/better-escape.vim", event = { "InsertEnter" } }
+    use { "tonyparkerspb/better-escape.vim", event = { "InsertEnter" } }
 
     --   if vim.g.is_mac then
     --     use { "lyokha/vim-xkbswitch", event = { "InsertEnter" } }
@@ -239,15 +236,15 @@ packer.startup {
     --   end
 
     --   -- Auto format tools
-    --   use { "sbdchd/neoformat", cmd = { "Neoformat" } }
+    use { "tonyparkerspb/neoformat", cmd = { "Neoformat" } }
 
     --   -- Git command inside vim
-    --   use { "tpope/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
+    use { "tonyparkerspb/vim-fugitive", event = "User InGitRepo", config = [[require('config.fugitive')]] }
 
     --   -- Better git log display
-    --   use { "rbong/vim-flog", requires = "tpope/vim-fugitive", cmd = { "Flog" } }
+    use { "tonyparkerspb/vim-flog", requires = "tonyparkerspb/vim-fugitive", cmd = { "Flog" } }
 
-    --   use { "christoomey/vim-conflicted", requires = "tpope/vim-fugitive", cmd = { "Conflicted" } }
+      use { "tonyparkerspb/vim-conflicted", requires = "tonyparkerspb/vim-fugitive", cmd = { "Conflicted" } }
 
     --   use {
     --     "ruifm/gitlinker.nvim",
@@ -257,7 +254,7 @@ packer.startup {
     --   }
 
     --   -- Show git change (change, delete, add) signs in vim sign column
-    --   use { "lewis6991/gitsigns.nvim", config = [[require('config.gitsigns')]] }
+    use { "tonyparkerspb/gitsigns.nvim", config = [[require('config.gitsigns')]] }
 
     --   -- Better git commit experience
     --   use { "rhysd/committia.vim", opt = true, setup = [[vim.cmd('packadd committia.vim')]] }
@@ -292,13 +289,13 @@ packer.startup {
 
     --   -- Additional powerful text object for vim, this plugin should be studied
     --   -- carefully to use its full power
-    --   use { "wellle/targets.vim", event = "VimEnter" }
+    use { "tonyparkerspb/targets.vim", event = "VimEnter" }
 
     --   -- Plugin to manipulate character pairs quickly
     --   use { "machakann/vim-sandwich", event = "VimEnter" }
 
     --   -- Add indent object for vim (useful for languages like Python)
-    --   use { "michaeljsmith/vim-indent-object", event = "VimEnter" }
+    use { "tonyparkerspb/vim-indent-object", event = "VimEnter" }
 
     --   -- Only use these plugin on Windows and Mac and when LaTeX is installed
     --   if utils.executable("latex") then
@@ -340,35 +337,35 @@ packer.startup {
     --   end
 
     --   -- Session management plugin
-    --   use { "tpope/vim-obsession", cmd = "Obsession" }
+    use { "tonyparkerspb/vim-obsession", cmd = "Obsession" }
 
     --   if vim.g.is_linux then
     --     use { "ojroques/vim-oscyank", cmd = { "OSCYank", "OSCYankReg" } }
     --   end
 
     --   -- The missing auto-completion for cmdline!
-    --   use { "gelguy/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] }
+    use { "tonyparkerspb/wilder.nvim", opt = true, setup = [[vim.cmd('packadd wilder.nvim')]] }
 
     --   -- showing keybindings
-    --   use {
-    --     "folke/which-key.nvim",
-    --     event = "VimEnter",
-    --     config = function()
-    --       vim.defer_fn(function()
-    --         require("config.which-key")
-    --       end, 2000)
-    --     end,
-    --   }
+    use {
+      "tonyparkerspb/which-key.nvim",
+      event = "VimEnter",
+      config = function()
+        vim.defer_fn(function()
+          require("config.which-key")
+        end, 2000)
+      end,
+    }
 
     --   -- show and trim trailing whitespaces
     --   use { "jdhao/whitespace.nvim", event = "VimEnter" }
 
     --   -- file explorer
-      use {
-        "tonyparkerspb/nvim-tree.lua",
-        requires = { "tonyparkerspb/nvim-web-devicons" },
-        config = [[require('config.nvim-tree')]],
-      }
+    use {
+      "tonyparkerspb/nvim-tree.lua",
+      requires = { "tonyparkerspb/nvim-web-devicons" },
+      config = [[require('config.nvim-tree')]],
+    }
 
     --   use { "ii14/emmylua-nvim", ft = "lua" }
 
