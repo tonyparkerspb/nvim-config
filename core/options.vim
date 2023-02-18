@@ -3,8 +3,7 @@ scriptencoding utf-8
 set number relativenumber  " Show line number and relative line number
 
 " syntax highlight
-" syntax enable
-colorscheme shades_of_purple
+syntax enable
 hi Normal guibg=NONE ctermbg=NONE " transparent background
 
 " russian language support
@@ -49,6 +48,8 @@ set softtabstop=2   " number of spaces in tab when editing
 set shiftwidth=2    " number of spaces to use for autoindent
 set expandtab       " expand tab to spaces so that tabs are spaces
 
+set cindent
+
 " Set matching pairs of characters and highlight matching brackets
 set matchpairs+=<:>,「:」,『:』,【:】,“:”,‘:’,《:》
 
@@ -60,11 +61,6 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set linebreak
 " Character to show before the lines that have been soft-wrapped
 set showbreak=↪
-
-" Use mouse to select and resize windows, etc.
-set mouse=nic  " Enable mouse in several mode
-set mousemodel=popup  " Set the behaviour of mouse
-set mousescroll=ver:1,hor:6
 
 " Disable showing current mode on command line since statusline plugins can show it.
 " set noshowmode
@@ -109,9 +105,57 @@ set scrolloff=3
 " Disable showing current mode on command line since statusline plugins can show it.
 set noshowmode
 
+" Use mouse to select and resize windows, etc.
+" set mouse=nic  " Enable mouse in several mode
+" set mousemodel=popup  " Set the behaviour of mouse
+" set mousescroll=ver:1,hor:6
+
 " TODO: move this mapping to lua
-nnoremap <A-LeftMouse> <Cmd>
-      \ set mouse=<Bar>
-      \ echo 'mouse OFF until next cursor-move'<Bar>
-      \ autocmd CursorMoved * ++once set mouse&<Bar>
-      \ echo 'mouse ON'<CR>
+" nnoremap <A-LeftMouse> <Cmd>
+"       \ set mouse=<Bar>
+"       \ echo 'mouse OFF until next cursor-move'<Bar>
+"       \ autocmd CursorMoved * ++once set mouse&<Bar>
+"       \ echo 'mouse ON'<CR>
+"
+
+" TODO: rewrite this mapping to lua
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" let loaded_netrw=1
+" let loaded_netrwPlugin=1
+
+let g:neoformat_try_node_exe = 1
+let g:neoformat_enabled_python = ['autopep8']
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_typescript = ['prettier']
+let g:neoformat_enabled_vue = ['prettier']
+let g:neoformat_enabled_lua = ['stylua']
+
+" let g:indentLine_char_list = ['|']
+" let g:indentLine_setColors = 0
+" let g:indentLine_enabled = 0
+
+set cursorcolumn
+set cursorline
+
+let g:better_escape_shortcut = ['jj', 'оо']
+
+" replace word under cursor
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" search word under cursor
+vnoremap <C-f> "fy/<C-r>f<CR>
+
+" correct indentation for braces
+inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
+inoremap [<CR> [<CR>]<Esc>O<BS><Tab>
+inoremap (<CR> (<CR>)<Esc>O<BS><Tab>
+
+" line text object
+xnoremap il g_o0
+onoremap il :normal vil<CR>
+xnoremap al $o0
+onoremap al :normal val<CR>
+
+" leave only this window (:only)
+nnoremap <silent> <leader>o :only<CR>

@@ -3,11 +3,11 @@ set -exu
 #set -o pipefail
 
 # Whether python3 has been installed on the system
-PYTHON_INSTALLED=false
+PYTHON_INSTALLED=true
 
 # If Python has been installed, then we need to know whether Python is provided
 # by the system, or you have already installed Python under your HOME.
-SYSTEM_PYTHON=false
+SYSTEM_PYTHON=true
 
 # If SYSTEM_PYTHON is false, we need to decide whether to install
 # Anaconda (INSTALL_ANACONDA=true) or Miniconda (INSTALL_ANACONDA=false)

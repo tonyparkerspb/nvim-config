@@ -13,6 +13,7 @@ end
 
 local core_conf_files = {
 --  "globals.lua", -- some global settings
+  "colorscheme.lua", -- setting colorscheme, it should go before options, cause there we slightly change the colorscheme
   "options.vim", -- setting options in nvim
   "autocommands.vim", -- various autocommands
   "mappings.lua", -- all the user-defined mappings
